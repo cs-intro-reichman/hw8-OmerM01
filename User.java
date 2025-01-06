@@ -62,7 +62,17 @@
      *  If the name is not in the list, does nothing and returns false. */
     public boolean removeFollowee(String name) {
         if(!follows(name)) return false;
-        
+        for (int i = 0; i < this.fCount; i++) {
+            if (this.follows[i].equals(name)) {
+                // Shift elements to the left
+                for (int j = i; j < fCount - 1; j++) {
+                    follows[j] = follows[j + 1];
+                }
+                follows[fCount - 1] = null;
+                fCount--;
+                return true;
+            }
+        }
         return false;
     }
 
