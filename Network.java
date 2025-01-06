@@ -91,24 +91,29 @@ public class Network {
         for(int i = 0; i < this.userCount; i++){
             int count = 0;
             for(int j = 0; j < this.userCount; j++){
-                if(j != i && users[j].follows(users[i].getName())){
+                if(j != i && this.users[j].follows(this.users[i].getName())){
                     count++;
                 }
             }
             arr[i] = count;
         }
         int maxInd = 0;
-        for(int i = 1; i < userCount; i++){
+        for(int i = 1; i < this.userCount; i++){
             if(arr[i] > arr[maxInd]) maxInd = i;
         }
-        return users[maxInd].getName();
+        return this.users[maxInd].getName();
     }
 
     /** Returns the number of times that the given name appears in the follows lists of all
      *  the users in this network. Note: A name can appear 0 or 1 times in each list. */
     private int followeeCount(String name) {
-        //// Replace the following statement with your code
-        return 0;
+        int count = 0;
+        for(int i = 0;i < this.userCount; i++){
+            if(!this.users[i].getName().equals(name) && this.users[i].follows(name)){
+                count++;
+            }
+        }
+        return count;
     }
 
     // Returns a textual description of all the users in this network, and who they follow.
