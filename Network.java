@@ -121,7 +121,19 @@ public class Network {
 
     // Returns a textual description of all the users in this network, and who they follow.
     public String toString() {
-        
+        String result = "Network : ";
+        if(this.userCount == 0) return result;
+        for (int i = 0; i < this.userCount; i++) {
+            result += this.users[i].getName() + " ->";
+            if(this.users[i].getfCount() == 0){
+                result += " ";
+            } else{
+                for(int j = 0; j < this.users[i].getfCount(); j++){
+                    result += " " + users[i].getfFollows()[j];
+                }
+            }
+
+            }
        return null;
     }
 }
